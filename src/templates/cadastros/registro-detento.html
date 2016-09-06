@@ -1,76 +1,126 @@
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-lg-12">
     <rd-widget>
-      <rd-widget-header icon="fa-tasks" title="Servers">
-        <a href="#">Manage</a>
-      </rd-widget-header>
-      <rd-widget-body classes="medium no-padding">
-        <div class="table-responsive">
-          <table class="table">
-            <tbody>
-              <tr><td>RDVMPC001</td><td>238.103.133.37</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-              <tr><td>RDVMPC002</td><td>68.66.63.170</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-              <tr><td>RDVMPC003</td><td>76.117.212.33</td><td><span tooltip="Server Down!" class="text-danger"><i class="fa fa-warning"></i></span></td></tr>
-              <tr><td>RDPHPC001</td><td>91.88.224.5</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-              <tr><td>RDESX001</td><td>197.188.15.93</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-              <tr><td>RDESX002</td><td>168.85.154.251</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-              <tr><td>RDESX003</td><td>209.25.191.61</td><td><span tooltip="Server Down!" class="text-danger"><i class="fa fa-warning"></i></span></td></tr>
-              <tr><td>RDESX004</td><td>252.37.192.235</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-              <tr><td>RDTerminal01</td><td>139.71.18.207</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-              <tr><td>RDTerminal02</td><td>136.80.122.212</td><td><span tooltip="Could not connect!" class="text-warning"><i class="fa fa-flash"></i></span></td></tr>
-              <tr><td>RDDomainCont01</td><td>196.80.245.33</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            </tbody>
-          </table>
-        </div>      
-      </rd-widget-body>
-      <rd-widget-footer>
-        <ul class="pagination pagination-sm pull-right">
-          <li><a href="#">&laquo;</a></li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#">&raquo;</a></li>
-        </ul>
-        <div class="clearfix"></div>
-      </rd-widget-footer>
-    </rd-widget>
-  </div>
-  <div class="col-lg-6">
-    <rd-widget>
-      <rd-widget-header icon="fa-tasks" title="Striped Servers">
-        <a href="#">Manage</a>
-      </rd-widget-header>
-      <rd-widget-body classes="medium no-padding">
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <tbody>
-              <tr><td>RDVMPC001</td><td>238.103.133.37</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-              <tr><td>RDVMPC002</td><td>68.66.63.170</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-              <tr><td>RDVMPC003</td><td>76.117.212.33</td><td><span tooltip="Server Down!" class="text-danger"><i class="fa fa-warning"></i></span></td></tr>
-              <tr><td>RDPHPC001</td><td>91.88.224.5</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-              <tr><td>RDESX001</td><td>197.188.15.93</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-              <tr><td>RDESX002</td><td>168.85.154.251</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-              <tr><td>RDESX003</td><td>209.25.191.61</td><td><span tooltip="Server Down!" class="text-danger"><i class="fa fa-warning"></i></span></td></tr>
-              <tr><td>RDESX004</td><td>252.37.192.235</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-              <tr><td>RDTerminal01</td><td>139.71.18.207</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-              <tr><td>RDTerminal02</td><td>136.80.122.212</td><td><span tooltip="Could not connect!" class="text-warning"><i class="fa fa-flash"></i></span></td></tr>
-              <tr><td>RDDomainCont01</td><td>196.80.245.33</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </rd-widget-body>
-      <rd-widget-footer>
-        <ul class="pagination pagination-sm pull-right">
-          <li><a href="#">&laquo;</a></li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">&raquo;</a></li>
-        </ul>
-        <div class="clearfix"></div>
-      </rd-widget-footer>
+      <rd-widget-header icon="fa-tasks" title="Cadastro de Detentos"></rd-widget-header>
+        <rd-widget-body>
+          <form class="form-horizontal">
+            <div class="row">
+              <div class="col-xs-6">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" placeholder="Nome">
+              </div>
+              <div class="col-xs-3">
+                <label for="registro-geral">Registro Geral</label>
+                <input type="text" class="form-control" placeholder="Registro Geral">
+              </div>
+              <div class="col-xs-3">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" placeholder="CPF">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-2">
+                <label for="nascimento">Nascimento</label>
+                <input type="text" class="form-control" placeholder="Nascimento">
+              </div>
+              <div class="col-xs-5">
+                <label for="nome-pai">Nome Pai</label>
+                <input type="text" class="form-control" placeholder="Nome Pai">
+              </div>
+              <div class="col-xs-5">
+                <label for="nome-mae">Nome Mãe</label>
+                <input type="text" class="form-control" placeholder="Nome Mãe">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <label for="cidade">Cidade</label>
+                <select class="form-control">
+                  <option>Jaraguá do Sul</option>
+                  <option>Joinville</option>
+                  <option>Guaramirim</option>
+                  <option>Garuva</option>
+                </select>
+              </div>
+              <div class="col-xs-6">
+                <label for="bairro">Bairro</label>
+                <select class="form-control">
+                  <option>João Pessoa</option>
+                  <option>Centro</option>
+                  <option>Guanabara</option>
+                  <option>Santo Antônio</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-10">
+                <label for="rua">Rua</label>
+                <input type="text" class="form-control" placeholder="Rua">
+              </div>
+              <div class="col-xs-2">
+                <label for="numero">Número</label>
+                <input type="text" class="form-control" placeholder="Número">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="row">
+                  <label for="observacao">Observação</label>
+                  <textarea class="form-control" placeholder="Observação" rows="5"></textarea>
+                </div>
+                <div class="row">
+                  <label for="telefone">Telefone</label>
+                  <input type="text" class="form-control" placeholder="Telefone">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="row"> 
+                  <label for="numero-processo">Número Processo</label>
+                  <input type="text" class="form-control" placeholder="Número Processo">
+                </div>
+                <div class="row">
+                  <label for="informacao-criminal">Informação Criminal</label>
+                  <textarea class="form-control" placeholder="Informação Criminal" rows="5"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-2">
+                <label for="termino-pena">Término pena</label>
+                <input type="text" class="form-control" placeholder="Término Pena">
+              </div>
+              <div class="col-xs-10">
+                <label for="recolhimento">Recolhimento</label>
+                <input type="text" class="form-control" placeholder="Recolhimento">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-10">
+                <label for="proibicoes">Proibições</label>
+                <input type="text" class="form-control" placeholder="Proibições">
+              </div>
+              <div class="col-xs-2">
+                <label for="data-cadastro">Data Cadastro</label>
+                <input type="text" class="form-control" value="10/01/2016" placeholder="Data Cadastro" disabled>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <label for="anexo">Anexo</label>
+                <input type="file" class="form-control-file" id="anexo" aria-describedby="fileHelp">
+                <small id="fileHelp" class="form-text text-muted">Local específico para realizar o upload de arquivos referentes ao detento.</small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+             <div class="col-xs-10">
+                <input class="btn btn-success" type="button" value="Enviar">
+                <input class="btn btn-danger" type="submit" value="Cancelar">
+              </div>
+            </div>
+          </form>
+        </rd-widget-body>
+      <rd-widget-footer></rd-widget-footer>
     </rd-widget>
   </div>
 </div>
