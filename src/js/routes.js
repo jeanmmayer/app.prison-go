@@ -16,8 +16,12 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: 'templates/dashboard.html'
             })
             .state('registro-detento', {
-                url: '/cadastros/registro-detento',
-                templateUrl: 'templates/cadastros/registro-detento.html'
+                url: '/detentos/registro-detento',
+                templateUrl: 'templates/detentos/registro-detento.html'
+            })
+            .state('lista-detento', {
+                url: '/detentos/lista-detento',
+                templateUrl: 'templates/detentos/lista-detento.html'
             });
     }
 ]);
