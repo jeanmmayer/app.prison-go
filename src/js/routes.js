@@ -22,6 +22,10 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
             .state('lista-detento', {
                 url: '/detentos/lista-detento',
                 templateUrl: 'templates/detentos/lista-detento.html'
+            })
+            .state('monitoramento', {
+                url: '/detentos/monitoramento',
+                templateUrl: 'templates/detentos/monitoramento.html'
             });
     }
 ]);
