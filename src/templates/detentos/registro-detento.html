@@ -1,126 +1,308 @@
-<div class="row">
-  <div class="col-lg-12">
-    <rd-widget>
-      <rd-widget-header icon="fa-tasks" title="Cadastro de Detentos"></rd-widget-header>
-        <rd-widget-body>
-          <form class="form-horizontal">
-            <div class="row">
-              <div class="col-xs-6">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" placeholder="Nome">
-              </div>
-              <div class="col-xs-3">
-                <label for="registro-geral">Registro Geral</label>
-                <input type="text" class="form-control" placeholder="Registro Geral">
-              </div>
-              <div class="col-xs-3">
-                <label for="cpf">CPF</label>
-                <input type="text" class="form-control" placeholder="CPF">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-2">
-                <label for="nascimento">Nascimento</label>
-                <input type="text" class="form-control" placeholder="Nascimento">
-              </div>
-              <div class="col-xs-5">
-                <label for="nome-pai">Nome Pai</label>
-                <input type="text" class="form-control" placeholder="Nome Pai">
-              </div>
-              <div class="col-xs-5">
-                <label for="nome-mae">Nome Mãe</label>
-                <input type="text" class="form-control" placeholder="Nome Mãe">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                <label for="cidade">Cidade</label>
-                <select class="form-control">
-                  <option>Jaraguá do Sul</option>
-                  <option>Joinville</option>
-                  <option>Guaramirim</option>
-                  <option>Garuva</option>
-                </select>
-              </div>
-              <div class="col-xs-6">
-                <label for="bairro">Bairro</label>
-                <select class="form-control">
-                  <option>João Pessoa</option>
-                  <option>Centro</option>
-                  <option>Guanabara</option>
-                  <option>Santo Antônio</option>
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-10">
-                <label for="rua">Rua</label>
-                <input type="text" class="form-control" placeholder="Rua">
-              </div>
-              <div class="col-xs-2">
-                <label for="numero">Número</label>
-                <input type="text" class="form-control" placeholder="Número">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                <div class="row">
-                  <label for="observacao">Observação</label>
-                  <textarea class="form-control" placeholder="Observação" rows="5"></textarea>
+<style>
+    .btn-adicionar {
+        padding-top: 25px;
+    }
+    textarea {
+        resize: none;
+    }
+</style>
+
+<div class="row" ng-controller="ArrestedRegisterController">
+    <div class="col-lg-12">
+        <rd-widget>
+            <rd-widget-header icon="fa-tasks" title="Cadastro de Detentos"></rd-widget-header>
+            <rd-widget-body>
+                <form class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <label>Nome</label>
+                            <input type="text" class="form-control" placeholder="Nome">
+                        </div>
+                        <div class="col-md-2">
+                            <label>Nascimento</label>
+                            <input type="date" class="form-control" placeholder="Nascimento">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-9">
+                            <label>Alcunha</label>
+                            <input type="text" ng-model="inputs.alcunha" class="form-control" placeholder="Alcunha">
+                        </div>
+                        <div class="btn-adicionar col-xs-12 col-md-1">
+                            <button name="btn-alcunha" ng-click="addAlcunha(inputs.alcunha)" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                        <div class="col-xs-12 col-md-2">
+                            <label>Periculosidade</label>
+                            <select class="form-control">
+                                <option>Alta</option>
+                                <option>Média</option>
+                                <option>Baixa</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <div class="row">
+                                <div ng-repeat-start="x in alcunha"></div>
+                                <div class="col-xs-12 col-md-10">
+                                    <div>
+                                        <input class="form-control" type="text" ng-model="x.alcunha" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-2">
+                                    <button ng-click="removeAlcunha($index)" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </button>
+                                </div>
+                                <div ng-repeat-end></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-5">
+                            <label>Registro Geral</label>
+                            <input type="text" class="form-control" ng-model="inputs.rg" placeholder="Registro Geral">
+                        </div>
+                        <div class="btn-adicionar col-xs-12 col-md-1">
+                            <button ng-click="addRegistroGeral(inputs.rg)" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                        <div class="col-xs-12 col-md-5">
+                            <label>CPF</label>
+                            <input type="text" class="form-control" ng-model="inputs.cpf" placeholder="CPF">
+                        </div>
+                        <div class="btn-adicionar col-xs-12 col-md-1">
+                            <button ng-click="addCpf(inputs.cpf)" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <div class="row">
+                                <div ng-repeat-start="x in registroGeral"></div>
+                                <div class="col-xs-12 col-md-10">
+                                    <div>
+                                        <input class="form-control" type="text" ng-model="x.rg" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-2">
+                                    <button ng-click="removeRegistroGeral($index)" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </button>
+                                </div>
+                                <div ng-repeat-end></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="row">
+                                <div ng-repeat-start="x in cpf"></div>
+                                <div class="col-xs-12 col-md-10">
+                                    <input class="form-control" type="text" ng-model="x.cpf" disabled>
+                                </div>
+                                <div class="col-xs-12 col-md-1">
+                                    <button ng-click="removeCpf($index)" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </button>
+                                </div>
+                                <div ng-repeat-end></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Nome Pai</label>
+                            <input type="text" class="form-control" placeholder="Nome Pai">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Nome Mãe</label>
+                            <input type="text" class="form-control" placeholder="Nome Mãe">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Cidade</label>
+                            <select class="form-control">
+                                <option>Jaraguá do Sul</option>
+                                <option>Joinville</option>
+                                <option>Guaramirim</option>
+                                <option>Garuva</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Bairro</label>
+                            <select class="form-control">
+                                <option>João Pessoa</option>
+                                <option>Centro</option>
+                                <option>Guanabara</option>
+                                <option>Santo Antônio</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <label>Rua</label>
+                            <input type="text" class="form-control" placeholder="Rua">
+                        </div>
+                        <div class="col-md-2">
+                            <label>Número</label>
+                            <input type="text" class="form-control" placeholder="Número">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <label>Observação</label>
+                                <textarea class="form-control" placeholder="Observação" rows="5"></textarea>
+                            </div>
+                            <div class="row">
+                                <label>Término pena</label>
+                                <input type="date" class="form-control" placeholder="Término Pena">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <label>Número Processo</label>
+                                <input type="text" class="form-control" placeholder="Número Processo">
+                            </div>
+                            <div class="row">
+                                <label>Informação Criminal</label>
+                                <textarea class="form-control" placeholder="Informação Criminal" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">                         
+                            <label>Telefone</label>
+                            <input type="text" ng-model="inputs.telefone" class="form-control" placeholder="Telefone">
+                        </div>
+                        <div class="btn-adicionar col-xs-12 col-md-1">
+                            <button ng-click="addTelefone(inputs.telefone)" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                        <div class="col-md-5">                      
+                            <label>Celular</label>
+                            <input type="text" ng-model="inputs.celular" class="form-control" placeholder="Celular">
+                        </div>
+                        <div class="btn-adicionar col-xs-12 col-md-1">
+                            <button ng-click="addCelular(inputs.celular)" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <div class="row">
+                                <div ng-repeat-start="x in telefone"></div>
+                                <div class="col-xs-12 col-md-10">
+                                    <div>
+                                        <input class="form-control" type="text" ng-model="x.telefone" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-2">
+                                    <button ng-click="removeTelefone($index)" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </button>
+                                </div>
+                                <div ng-repeat-end></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="row">
+                                <div ng-repeat-start="x in celular"></div>
+                                <div class="col-xs-12 col-md-10">
+                                    <input class="form-control" type="text" ng-model="x.celular" disabled>
+                                </div>
+                                <div class="col-xs-12 col-md-1">
+                                    <button ng-click="removeCelular($index)" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </button>
+                                </div>
+                                <div ng-repeat-end></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Proibição</label>
+                            <input type="text" ng-model="inputs.proibicao" class="form-control" placeholder="Proibição">
+                        </div>
+                        <div class="col-md-3">
+                            <label>Recolhimento</label>
+                            <input type="text"  ng-model="inputs.recolhimento" class="form-control" ng-model="recolhimento" placeholder="Recolhimento">
+                        </div>
+                        <div class="col-md-2">
+                            <label>Data Inicio</label>
+                            <input type="date"  ng-model="inputs.dataInicio" class="form-control" value="10/01/2016" placeholder="Data Inicio">
+                        </div>
+                        <div class="col-md-2">
+                            <label>Data Final</label>
+                            <input type="date"  ng-model="inputs.dataFinal" class="form-control" value="10/02/2016" placeholder="Data Final">
+                        </div>
+                        <div class="btn-adicionar col-xs-12 col-md-1">
+                            <button ng-click="addRecolhimento(inputs.recolhimento, inputs.proibicao, inputs.dataInicio, inputs.dataFinal)" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <div class="row">
+                                <div ng-repeat-start="x in recolhimento"></div>
+                                <div class="col-xs-12 col-md-3">
+                                    <div>
+                                        <input class="form-control" type="text" ng-model="x.proibicao" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-3">
+                                    <div>
+                                        <input class="form-control" type="text" ng-model="x.recolhimento" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-2">
+                                    <div>
+                                        <input class="form-control" type="date" ng-model="x.dataInicio" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-2">
+                                    <div>
+                                        <input class="form-control" type="date" ng-model="x.dataFinal" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-2">
+                                    <button ng-click="removeRecolhimento($index)" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </button>
+                                </div>
+                                <div ng-repeat-end></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Anexo</label>
+                            <input type="file" class="form-control-file" id="anexo" aria-describedby="fileHelp">
+                            <small id="fileHelp" class="form-text text-muted">Local específico para realizar o upload de arquivos referentes ao detento.</small>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Cadastro</label>
+                            <input type="text" class="form-control" value="01/01/2016" placeholder="Data Final" disabled>
+                        </div>
+                    </div>
                 </div>
-                <div class="row">
-                  <label for="telefone">Telefone</label>
-                  <input type="text" class="form-control" placeholder="Telefone">
-                </div>
-              </div>
-              <div class="col-xs-6">
-                <div class="row"> 
-                  <label for="numero-processo">Número Processo</label>
-                  <input type="text" class="form-control" placeholder="Número Processo">
-                </div>
-                <div class="row">
-                  <label for="informacao-criminal">Informação Criminal</label>
-                  <textarea class="form-control" placeholder="Informação Criminal" rows="5"></textarea>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-2">
-                <label for="termino-pena">Término pena</label>
-                <input type="text" class="form-control" placeholder="Término Pena">
-              </div>
-              <div class="col-xs-10">
-                <label for="recolhimento">Recolhimento</label>
-                <input type="text" class="form-control" placeholder="Recolhimento">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-10">
-                <label for="proibicoes">Proibições</label>
-                <input type="text" class="form-control" placeholder="Proibições">
-              </div>
-              <div class="col-xs-2">
-                <label for="data-cadastro">Data Cadastro</label>
-                <input type="text" class="form-control" value="10/01/2016" placeholder="Data Cadastro" disabled>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                <label for="anexo">Anexo</label>
-                <input type="file" class="form-control-file" id="anexo" aria-describedby="fileHelp">
-                <small id="fileHelp" class="form-text text-muted">Local específico para realizar o upload de arquivos referentes ao detento.</small>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-             <div class="col-xs-10">
-                <input class="btn btn-success" type="button" value="Enviar">
-                <input class="btn btn-danger" type="submit" value="Cancelar">
-              </div>
-            </div>
-          </form>
-        </rd-widget-body>
-      <rd-widget-footer></rd-widget-footer>
-    </rd-widget>
-  </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <input class="btn btn-success" type="button" value="Enviar">
+                            <input class="btn btn-danger" type="submit" value="Cancelar">
+                        </div>
+                    </div>
+                </form>
+            </rd-widget-body>
+            <rd-widget-footer></rd-widget-footer>
+        </rd-widget>
+    </div>
 </div>
